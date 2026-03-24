@@ -12,5 +12,11 @@ async function getMovies() {
 async function main(){
     let movies20 = await getMovies();
     console.log(movies20);
+    let result = document.getElementById("result")
+    let resultContent = "";
+    movies20.forEach((movie,idx) => {
+        resultContent += `${idx+1}. ${movie.original_title} \n`;
+    });
+    result.innerText = resultContent;
 }
 main();
