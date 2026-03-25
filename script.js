@@ -1,7 +1,7 @@
 async function getMovies() {
   try {
     let response = await fetch(
-      "https://api.themoviedb.org/3/movie/popular?api_key=1829dffd986a3aa94677f730051f78f7",
+      "https://api.themoviedb.org/3/movie/top_rated?api_key=1829dffd986a3aa94677f730051f78f7",
     );
     let data = await response.json();
     return data.results;
