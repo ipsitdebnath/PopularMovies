@@ -11,7 +11,8 @@ async function getMovies() {
 }
 
 async function main() {
-  let movies20 = await getMovies();
+  try{
+    let movies20 = await getMovies();
   console.log(movies20);
   let result = document.getElementById("result");
 
@@ -31,12 +32,17 @@ async function main() {
     title.innerText = movie.original_title + ` (${movie.original_language})`;
     title.classList.add("title");
     let releaseDate = document.createElement("h5");
-    releaseDate.innerText = `${movie.release_date}`;
+    releaseDate.innerText = `${movie.release_date[0]}${movie.release_date[1]}${movie.release_date[2]}${movie.release_date[3]}`;
     releaseDate.classList.add("releaseDate");
 
     card.append(img,rank,vote,title,releaseDate);
     result.append(card)
   });
+  }
+  catch (error){
+    console.log("Error in executing getMovies fn before main fn");
+    
+  }
 
 }
 
