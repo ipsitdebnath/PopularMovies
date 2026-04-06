@@ -5,7 +5,7 @@ let favourites = new Set();
 async function getMovies() {
   try {
     let response = await fetch(
-      "https://api.themoviedb.org/3/movie/top_rated?api_key=1829dffd986a3aa94677f730051f78f7"
+      "https://api.themoviedb.org/3/movie/top_rated?api_key=1829dffd986a3aa94677f730051f78f7",
     );
     let data = await response.json();
     return data.results;
@@ -43,20 +43,25 @@ function renderMovies(movies) {
     releaseDate.classList.add("releaseDate");
 
     let favBtn = document.createElement("button");
+    favBtn.classList.add("favBtn");
 
     if (favourites.has(movie.id)) {
-      favBtn.innerText = "❤️ Favourite";
+      favBtn.innerHTML = "❤";
+      favBtn.style.color = "#ef4444";
     } else {
-      favBtn.innerText = "🤍 Add Favourite";
+      favBtn.innerHTML = "❤";
+      favBtn.style.color = "white";
     }
 
-    favBtn.addEventListener("click", () => {
+    favBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
       if (favourites.has(movie.id)) {
         favourites.delete(movie.id);
+        favBtn.style.color = "white";
       } else {
         favourites.add(movie.id);
+        favBtn.style.color = "#ef4444";
       }
-      renderMovies(displayedMovies);
     });
 
     card.append(img, rank, vote, title, releaseDate, favBtn);
@@ -85,6 +90,10 @@ document.getElementById("search").addEventListener("input", (e) => {
   renderMovies(displayedMovies);
 });
 
+document.getElementById("default").addEventListener("click", () => {
+  displayedMovies = [...allMovies];
+  renderMovies(displayedMovies);
+});
 document.getElementById("ratingHigh").addEventListener("click", () => {
   displayedMovies = [...displayedMovies].sort(
     (a, b) => b.vote_average - a.vote_average,
