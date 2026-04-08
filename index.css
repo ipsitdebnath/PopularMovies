@@ -1,158 +1,255 @@
-body{
-    background-color:#0f172a;
-    font-family: Arial, Helvetica, sans-serif;
-    margin:0;
-    color:white;
+body {
+  background-color: #0f172a;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  color: white;
 }
-header{
-    background:linear-gradient(90deg,#020617,#0f172a);
-    color:white;
-    font-size:28px;
-    font-weight:700;
-    letter-spacing:1px;
-    padding:20px;
-    text-align:center;
-    box-shadow:0 4px 15px rgba(0,0,0,0.1);
-    border-bottom:1px solid rgba(255,255,255,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1;
-}
-
-#result{
-    display:flex;
-    flex-wrap:wrap;
-    gap:20px;
-    justify-content:center;
-    padding:20px;
+header {
+  background: linear-gradient(90deg, #020617, #0f172a);
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
-.movieCard{
-    width:200px;
-    background:#111827;
-    border-radius:12px;
-    overflow:hidden;
-    transition:0.3s;
-    cursor:pointer;
-    position:relative;
-    box-shadow: 0 6px 5px rgba(0,0,0,0.2);
+#result {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
 }
 
-.movieCard:hover{
-    transform:translateY(-8px);
-    box-shadow:0 15px 30px rgba(0,0,0,0.8);
+.movieCard {
+  width: 200px;
+  background: #111827;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 6px 5px rgba(0, 0, 0, 0.2);
 }
 
-.poster{
-    width:100%;
-    height:300px;
-    object-fit:cover;
-    display:block;
+.movieCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
 }
 
-.rank{
-    position:absolute;
-    top:0;
-    left:8px;
-    background:gold;
-    color:black;
-    padding:4px 8px;
-    border-radius:6px;
-    font-size:14px;
-    font-weight:bold;
+.poster {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
 }
 
-.vote{
-    margin:8px 10px 0 10px;
-    color:#facc15;
-    font-size:14px;
+.rank {
+  position: absolute;
+  top: 0;
+  left: 8px;
+  background: gold;
+  color: black;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
-.title{
-    margin:5px 10px;
-    font-size:16px;
-    font-weight:bold;
+.vote {
+  margin: 8px 10px 0 10px;
+  color: #facc15;
+  font-size: 14px;
 }
 
-.releaseDate{
-    margin:5px 10px 12px 10px;
-    color:#9ca3af;
-    font-size:13px;
+.title {
+  margin: 5px 10px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-.topBar{
-    position:relative;
-    padding:15px 20px 5px 20px;
+.releaseDate {
+  margin: 5px 10px 12px 10px;
+  color: #9ca3af;
+  font-size: 13px;
 }
 
-.searchContainer{
-    display:flex;
-    justify-content:center;
+.topBar {
+  position: relative;
+  padding: 15px 20px 5px 20px;
 }
 
-#search{
-    width:420px;
-    padding:13px 20px;
-    border-radius:40px;
-    border:none;
-    background:#020617;
-    color:white;
-    font-size:15px;
-    outline:none;
-    border:1px solid rgba(255,255,255,0.1);
-    transition:.3s;
+.searchContainer {
+  display: flex;
+  justify-content: center;
 }
 
-#search:focus{
-    border:1px solid #facc15;
-    box-shadow:0 0 15px rgba(250,204,21,0.35);
+#search {
+  width: 420px;
+  padding: 13px 20px;
+  border-radius: 40px;
+  border: none;
+  background: #020617;
+  color: white;
+  font-size: 15px;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: 0.3s;
 }
 
-.sortContainer{
-    position:absolute;
-    right:25px;
-    top:15px;
-    display:flex;
-    gap:8px;
+#search:focus {
+  border: 1px solid #facc15;
+  box-shadow: 0 0 15px rgba(250, 204, 21, 0.35);
 }
 
-.sortContainer button{
-
-    background:#020617;
-    color:#9ca3af;
-    border:1px solid rgba(255,255,255,0.1);
-    padding:7px 12px;
-    border-radius:6px;
-    font-size:13px;
-    cursor:pointer;
-    transition:.25s;
+.sortContainer {
+  position: absolute;
+  right: 25px;
+  top: 15px;
+  display: flex;
+  gap: 8px;
 }
 
-.sortContainer button:hover{
-    color:white;
-    background:#111827;
-    transform:translateY(-2px);
+.sortContainer button {
+  background: #020617;
+  color: #9ca3af;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 7px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.25s;
 }
 
-.favBtn{
-    position:absolute;
-    top:10px;
-    right:10px;
-    background:rgba(0,0,0,0.6);
-    border:none;
-    width:32px;
-    height:32px;
-    border-radius:50%;
-    font-size:18px;
-    cursor:pointer;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:0.25s;
-    text-shadow:0 2px 6px rgba(0,0,0,0.8);
+.sortContainer button:hover {
+  color: white;
+  background: #111827;
+  transform: translateY(-2px);
 }
 
-.favBtn:hover{
-    transform:scale(1.2);
-    background:black;
+.favBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.favBtn:hover {
+  transform: scale(1.2);
+  background: black;
+}
+
+.sort_title {
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.empty {
+  text-align: center;
+  padding: 40px;
+  color: #9ca3af;
+}
+
+.loader {
+  text-align: center;
+  font-size: 22px;
+  padding: 40px;
+  color: #9ca3af;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+@media (max-width: 768px) {
+  .topBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sortContainer {
+    position: static;
+    margin-top: 10px;
+  }
+
+  #search {
+    width: 280px;
+  }
+
+  .movieCard {
+    width: 160px;
+  }
+
+  .poster {
+    height: 230px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    font-size: 22px;
+    padding: 15px;
+  }
+
+  #search {
+    width: 220px;
+    padding: 10px;
+  }
+
+  .sortContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .sortContainer button {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .movieCard {
+    width: 140px;
+  }
+
+  .poster {
+    height: 200px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+
+  .vote {
+    font-size: 12px;
+  }
+  .releaseDate {
+    font-size: 11px;
+  }
 }
