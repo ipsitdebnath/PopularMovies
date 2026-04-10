@@ -17,7 +17,9 @@ async function getMovies() {
 
 async function searchMovies(query) {
   let response = await fetch(
-    "https://api.themoviedb.org/3/search/movie?api_key=1829dffd986a3aa94677f730051f78f7&query=" +query,);
+    "https://api.themoviedb.org/3/search/movie?api_key=1829dffd986a3aa94677f730051f78f7&query=" +
+      query,
+  );
   let data = await response.json();
   return data.results;
 }
@@ -37,7 +39,7 @@ function debounce(func, delay) {
 /* ACTIVE BUTTON */
 
 function setActiveButton(clickedBtn) {
-  let buttons = document.querySelectorAll(".sortContainer button");
+  let buttons = document.querySelectorAll(".sortContainer button, #randomMovie");
   buttons.forEach((btn) => {
     btn.classList.remove("activeBtn");
   });
@@ -97,7 +99,9 @@ function renderMovies(movies) {
     /* YEAR */
 
     let releaseDate = document.createElement("h5");
-    releaseDate.innerText = movie.release_date? movie.release_date.slice(0, 4): "N/A";
+    releaseDate.innerText = movie.release_date
+      ? movie.release_date.slice(0, 4)
+      : "N/A";
     releaseDate.classList.add("releaseDate");
 
     /* FAV BUTTON */
@@ -147,17 +151,19 @@ document.getElementById("search").addEventListener(
   "input",
   debounce(async (e) => {
     let keyword = e.target.value.trim();
+
+    let sectionTitle = document.querySelector(".sectionTitle");
+
     if (keyword === "") {
+      sectionTitle.innerText = "Top Movies of All Time";
       displayedMovies = allMovies;
       renderMovies(displayedMovies);
       return;
     }
 
-    let result = document.getElementById("result");
-    result.innerHTML = "<h2 class='empty'>Searching...</h2>";
+    sectionTitle.innerText = `Search Results for "${keyword}"`;
 
     let movies = await searchMovies(keyword);
-
     displayedMovies = movies;
 
     renderMovies(displayedMovies);
@@ -168,6 +174,9 @@ document.getElementById("search").addEventListener(
 
 document.getElementById("default").addEventListener("click", (e) => {
   setActiveButton(e.target);
+
+  let sectionTitle = document.querySelector(".sectionTitle");
+  sectionTitle.innerText = "Top Movies of All Time";
 
   displayedMovies = [...allMovies];
   renderMovies(displayedMovies);
@@ -215,7 +224,35 @@ document.getElementById("yearNew").addEventListener("click", (e) => {
 document.getElementById("showFav").addEventListener("click", (e) => {
   setActiveButton(e.target);
 
+  let sectionTitle = document.querySelector(".sectionTitle");
+  sectionTitle.innerText = "Your Favourites ❤️";
+
   renderMovies(favourites);
+});
+
+document.getElementById("randomMovie").addEventListener("click", (e) => {
+  setActiveButton(e.target);
+  let sectionTitle = document.querySelector(".sectionTitle");
+  let result = document.getElementById("result");
+
+  if (favourites.length === 0) {
+    sectionTitle.innerText = "No favourites to pick from 😢";
+    result.innerHTML = "<h2 class='empty'>Add some favourites first ❤️</h2>";
+    return;
+  }
+
+  sectionTitle.innerText = "Picking your movie... 🎲";
+  result.innerHTML =
+    "<h2 class='empty'>Choosing something awesome for you...</h2>";
+
+  setTimeout(() => {
+    let randomIndex = Math.floor(Math.random() * favourites.length);
+    let randomMovie = favourites[randomIndex];
+
+    sectionTitle.innerText ="🎲 Tonight: " + (randomMovie.title || randomMovie.original_title);
+
+    renderMovies([randomMovie]);
+  }, 800);
 });
 
 main();
