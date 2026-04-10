@@ -1,36 +1,91 @@
-# Movie Explorer
+# 🎬 MovieDB Explorer
 
-## About the Project
+A modern movie browsing web application built using the TMDb API.
+Users can explore top-rated movies, search any movie in real time, sort results, and save their favourites — all in a sleek dark-themed interface inspired by streaming platforms.
 
-This project is a simple movie explorer web application that fetches movie data using the TMDB API and displays popular movies with their posters, ratings, and descriptions. The goal of this project is to practice working with APIs and improve my JavaScript and frontend development skills.
+---
 
-## API Used
+## 🚀 Features
 
-TMDB (The Movie Database) API
-It is used to fetch movie data such as titles, posters, ratings, and release dates.
+* 🎥 View top-rated movies (default homepage)
+* 🔍 Search any movie using TMDb API
+* ⭐ Sort movies by rating (high → low / low → high)
+* 📅 Sort movies by latest release year
+* ❤️ Add and remove favourites
+* 💾 Favourites stored using LocalStorage
+* 🎯 Clean UI with dark theme
+* 📱 Responsive design (mobile friendly)
 
-## Features
+---
 
-* View popular movies
-* Display movie posters and ratings
-* Movie descriptions or overview
-* Search functionality (planned)
-* Movie details page (planned)
-
-## Technologies Used
+## 🛠 Technologies Used
 
 * HTML
 * CSS
-* JavaScript
-* TMDB API
+* JavaScript (Vanilla JS)
+* TMDb API
 * Fetch API
 
-## How to Run
+---
+
+## 📡 API Used
+
+**TMDb (The Movie Database) API**
+Used to fetch movie data including titles, posters, ratings, and release dates.
+
+---
+
+## ⚙️ How to Run
 
 1. Clone the repository
-2. Add your TMDB API key in the JavaScript file
-3. Open index.html in your browser
 
-## Author
+   ```
+   git clone https://github.com/your-username/movie-explorer.git
+   ```
 
-Ipsit Debnath
+2. Navigate to the project folder
+
+   ```
+   cd movie-explorer
+   ```
+
+3. Open the project
+   Open `index.html` in your browser
+
+---
+
+## 🌐 Live Demo
+
+(Add your deployed link here)
+
+---
+
+## 📸 Preview
+
+(Add screenshots of your UI here)
+
+---
+
+## 📌 Key Learnings
+
+* Working with real-world APIs
+* Handling asynchronous JavaScript (fetch, async/await)
+* Managing application state (search, sorting, favourites)
+* Using LocalStorage for data persistence
+* Handling missing or inconsistent API data
+* Building responsive UI layouts
+
+---
+
+## 🔮 Future Improvements
+
+* 🎭 Filter by genres
+* 🎬 Movie details page / modal
+* 🔄 Pagination or infinite scroll
+* 🎲 Random movie suggestion
+
+---
+
+## 👨‍💻 Author
+
+**Ipsit Debnath**

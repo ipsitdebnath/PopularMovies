@@ -1,5 +1,4 @@
 let allMovies = [];
-
 let displayedMovies = [];
 
 let favourites = JSON.parse(localStorage.getItem("favourites")) || [];
@@ -14,7 +13,7 @@ async function getMovies() {
   return data.results;
 }
 
-/* SEARCH MOVEIS */
+/* SEARCH MOVIES */
 
 async function searchMovies(query) {
   let response = await fetch(
@@ -35,6 +34,16 @@ function debounce(func, delay) {
   };
 }
 
+/* ACTIVE BUTTON */
+
+function setActiveButton(clickedBtn) {
+  let buttons = document.querySelectorAll(".sortContainer button");
+  buttons.forEach((btn) => {
+    btn.classList.remove("activeBtn");
+  });
+  clickedBtn.classList.add("activeBtn");
+}
+
 /* RENDER */
 
 function renderMovies(movies) {
@@ -50,7 +59,7 @@ function renderMovies(movies) {
     let card = document.createElement("div");
     card.classList.add("movieCard");
 
-    /* RANK (only for default list) */
+    /* RANK (only default) */
 
     if (movies === allMovies) {
       let rank = document.createElement("h2");
@@ -64,7 +73,7 @@ function renderMovies(movies) {
     let img = document.createElement("img");
 
     if (movie.poster_path) {
-      img.src = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
+      img.src = "https://image.tmdb.org/t/p/original" + movie.poster_path;
     } else {
       img.src = "https://via.placeholder.com/300x450?text=No+Image";
     }
@@ -88,9 +97,7 @@ function renderMovies(movies) {
     /* YEAR */
 
     let releaseDate = document.createElement("h5");
-    releaseDate.innerText = movie.release_date
-      ? movie.release_date.slice(0, 4)
-      : "N/A";
+    releaseDate.innerText = movie.release_date? movie.release_date.slice(0, 4): "N/A";
     releaseDate.classList.add("releaseDate");
 
     /* FAV BUTTON */
@@ -107,7 +114,6 @@ function renderMovies(movies) {
 
     favBtn.addEventListener("click", () => {
       let index = favourites.findIndex((m) => m.id === movie.id);
-
       if (index !== -1) {
         favourites.splice(index, 1);
         favBtn.style.color = "white";
@@ -119,7 +125,6 @@ function renderMovies(movies) {
       localStorage.setItem("favourites", JSON.stringify(favourites));
     });
 
-    /* APPEND IN CARd*/
     card.append(img, vote, title, releaseDate, favBtn);
     result.append(card);
   });
@@ -147,22 +152,32 @@ document.getElementById("search").addEventListener(
       renderMovies(displayedMovies);
       return;
     }
+
+    let result = document.getElementById("result");
+    result.innerHTML = "<h2 class='empty'>Searching...</h2>";
+
     let movies = await searchMovies(keyword);
+
     displayedMovies = movies;
+
     renderMovies(displayedMovies);
   }, 300),
 );
 
 /* DEFAULT */
 
-document.getElementById("default").addEventListener("click", () => {
+document.getElementById("default").addEventListener("click", (e) => {
+  setActiveButton(e.target);
+
   displayedMovies = [...allMovies];
   renderMovies(displayedMovies);
 });
 
 /* SORT HIGH */
 
-document.getElementById("ratingHigh").addEventListener("click", () => {
+document.getElementById("ratingHigh").addEventListener("click", (e) => {
+  setActiveButton(e.target);
+
   displayedMovies = [...displayedMovies].sort(
     (a, b) => (b.vote_average || 0) - (a.vote_average || 0),
   );
@@ -172,7 +187,9 @@ document.getElementById("ratingHigh").addEventListener("click", () => {
 
 /* SORT LOW */
 
-document.getElementById("ratingLow").addEventListener("click", () => {
+document.getElementById("ratingLow").addEventListener("click", (e) => {
+  setActiveButton(e.target);
+
   displayedMovies = [...displayedMovies].sort(
     (a, b) => (a.vote_average || 0) - (b.vote_average || 0),
   );
@@ -182,15 +199,22 @@ document.getElementById("ratingLow").addEventListener("click", () => {
 
 /* SORT YEAR */
 
-document.getElementById("yearNew").addEventListener("click", () => {
-  displayedMovies = [...displayedMovies].sort((a, b) => (b.release_date || "0").slice(0, 4) - (a.release_date || "0").slice(0, 4),);
+document.getElementById("yearNew").addEventListener("click", (e) => {
+  setActiveButton(e.target);
+
+  displayedMovies = [...displayedMovies].sort(
+    (a, b) =>
+      (b.release_date || "0").slice(0, 4) - (a.release_date || "0").slice(0, 4),
+  );
 
   renderMovies(displayedMovies);
 });
 
 /* SHOW FAVOURITES */
 
-document.getElementById("showFav").addEventListener("click", () => {
+document.getElementById("showFav").addEventListener("click", (e) => {
+  setActiveButton(e.target);
+
   renderMovies(favourites);
 });
 

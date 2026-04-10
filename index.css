@@ -167,6 +167,15 @@ header {
   color: #9ca3af;
   animation: pulse 1.5s infinite;
 }
+.sortContainer button.activeBtn{
+  background:#facc15;
+  color:black;
+  border:1px solid #facc15;
+  box-shadow:0 0 10px rgba(250,204,21,0.4);
+}
+.sortContainer button.activeBtn:hover{
+  transform:scale(1.05);
+}
 @keyframes pulse {
   0% {
     opacity: 0.4;
