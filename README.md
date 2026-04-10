@@ -53,7 +53,7 @@ Used to fetch movie data including titles, posters, ratings, and release dates.
 
 ## 🌐 Live Demo
 
-[website](https://popular-movies-pi.vercel.app/)
+[Movie Explorer](https://popular-movies-pi.vercel.app/)
 
 ---
 
