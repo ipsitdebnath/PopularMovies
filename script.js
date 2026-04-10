@@ -242,8 +242,7 @@ document.getElementById("randomMovie").addEventListener("click", (e) => {
   }
 
   sectionTitle.innerText = "Picking your movie... 🎲";
-  result.innerHTML =
-    "<h2 class='empty'>Choosing something awesome for you...</h2>";
+  result.innerHTML ="<h2 class='empty'>Choosing something awesome for you...</h2>";
 
   setTimeout(() => {
     let randomIndex = Math.floor(Math.random() * favourites.length);
