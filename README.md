@@ -39,15 +39,12 @@ Used to fetch movie data including titles, posters, ratings, and release dates.
 
 1. Clone the repository
 
-   ```
    git clone https://github.com/your-username/movie-explorer.git
-   ```
 
 2. Navigate to the project folder
 
-   ```
    cd movie-explorer
-   ```
+
 
 3. Open the project
    Open `index.html` in your browser
@@ -56,14 +53,18 @@ Used to fetch movie data including titles, posters, ratings, and release dates.
 
 ## 🌐 Live Demo
 
-(Add your deployed link here)
+[website](https://popular-movies-pi.vercel.app/)
 
 ---
 
 ## 📸 Preview
 
-(Add screenshots of your UI here)
-
+### 🏠 Home Page
+![Home](screenshots/homepage.png)
+### 🔍 Search Results
+![Search](screenshots/search.png)
+### ❤️ Favourites
+![Favourites](screenshots/favourites.png)
 ---
 
 ## 📌 Key Learnings
