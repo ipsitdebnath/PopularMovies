@@ -1,7 +1,7 @@
-# 🎬 MovieDB Explorer
+# 🎬 CineDB Explorer
 
 A modern movie browsing web application built using the TMDb API.
-Users can explore top-rated movies, search any movie in real time, sort results, and save their favourites — all in a sleek dark-themed interface inspired by streaming platforms.
+Users can explore top-rated movies, search any movie in real time, sort results, save their favourites, and get a random movie suggestion — all in a sleek dark-themed interface inspired by streaming platforms.
 
 ---
 
@@ -13,6 +13,7 @@ Users can explore top-rated movies, search any movie in real time, sort results,
 * 📅 Sort movies by latest release year
 * ❤️ Add and remove favourites
 * 💾 Favourites stored using LocalStorage
+* 🎲 Random Movie Night — get a random movie suggestion
 * 🎯 Clean UI with dark theme
 * 📱 Responsive design (mobile friendly)
 
@@ -39,11 +40,11 @@ Used to fetch movie data including titles, posters, ratings, and release dates.
 
 1. Clone the repository
 
-   git clone https://github.com/your-username/movie-explorer.git
+   git clone https://github.com/ipsitdebnath/CineDB.git
 
 2. Navigate to the project folder
 
-   cd movie-explorer
+   cd CineDB
 
 
 3. Open the project
@@ -53,7 +54,7 @@ Used to fetch movie data including titles, posters, ratings, and release dates.
 
 ## 🌐 Live Demo
 
-[Movie Explorer](https://popular-movies-pi.vercel.app/)
+[CineDB Explorer](https://popular-movies-pi.vercel.app/)
 
 ---
 
@@ -65,6 +66,9 @@ Used to fetch movie data including titles, posters, ratings, and release dates.
 ![Search](screenshots/search.png)
 ### ❤️ Favourites
 ![Favourites](screenshots/favourites.png)
+### 🎲 Random Movie Night
+![Random Movie](screenshots/random_movie.png)
+
 ---
 
 ## 📌 Key Learnings
@@ -83,7 +87,6 @@ Used to fetch movie data including titles, posters, ratings, and release dates.
 * 🎭 Filter by genres
 * 🎬 Movie details page / modal
 * 🔄 Pagination or infinite scroll
-* 🎲 Random movie suggestion
 
 ---
 
